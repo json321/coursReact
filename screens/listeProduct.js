@@ -5,6 +5,7 @@ import Bouton from '../components/bouton';
 import { connect } from 'react-redux';
 import Produit from '../components/Produit';
 import Separator from '../components/separator';
+import Lien from '../components/lien';
 
 class ListeProduct extends React.Component{
     constructor(props) {
@@ -58,7 +59,7 @@ class ListeProduct extends React.Component{
         return (
             <View style= {styles.container}>
                 <View >
-                    <Title text={"Produit de " + this.state.userName}/>
+                    <Title text="Fruits"/>
                 </View>
                 
                 <FlatList
@@ -67,9 +68,9 @@ class ListeProduct extends React.Component{
                     renderItem={({item}) => <Produit produit={item} />}
                     ItemSeparatorComponent={<Separator/>}
                 />
-                <Bouton nav={() => navigate("Profil")} theme="violet" text="Mon profil ->"/>  
-                <Bouton nav={() => this.onDecoPressed()} theme="violet" text="DECONNECTION"/>
-
+                <Bouton nav={() => navigate("Panier")} theme="violet" text="Mon panier"/>
+                <Lien nav={() => navigate("Profil")}  text="profil"/>  
+                <Lien nav={() => this.onDecoPressed()}text="Deconnexion"/>
             </View>     
         )   
     }
@@ -78,7 +79,7 @@ class ListeProduct extends React.Component{
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#fff0db',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -98,7 +99,8 @@ const styles = StyleSheet.create({
 
     inline: {
         flexDirection: "row"
-    }
+    },
+
 
 });
 

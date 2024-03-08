@@ -17,17 +17,17 @@ class Produit extends React.Component {
             for (let i = 0; i < panier.length; i++) {
                 if(panier[i].type == produit.id) {
                     checkpanier = true
-                    const action = {type: "UPDATE_PANIER", value: {type: produit.id}, id:i};
+                    const action = {type: "UPDATE_PANIER", value: {type: produit.id}, id:i, prix: produit.prix};
                     this.props.dispatch(action)
                     break;
                 } 
             }
             if (checkpanier === false) {
-                const action = {type: "ADD_PANIER", value: {type: produit.id, qte: 1}};
+                const action = {type: "ADD_PANIER", value: {type: produit.id, qte: 1, prix: produit.prix, nom: produit.name, photo: produit.image}};
                 this.props.dispatch(action);
             }
         } else {
-            const action = {type: "ADD_PANIER", value: {type: produit.id, qte: 1}};
+            const action = {type: "ADD_PANIER", value: {type: produit.id, qte: 1, prix: produit.prix, nom: produit.name, photo: produit.image}};
             this.props.dispatch(action);
         }
 
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         height: 200,
         borderWidth: 2,
         borderColor: "#666",
-        marginBottom: 30
+        margin: 30
 
     },
     content: {

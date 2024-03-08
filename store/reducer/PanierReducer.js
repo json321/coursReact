@@ -12,16 +12,17 @@ function panierReducer(state = initialState, action) {
                 return nextState
 
             case 'UPDATE_PANIER':    
-            nextState = JSON.parse(JSON.stringify(state))
-            console.log(nextState)
-            nextState.panier[action.id].qte +=1
+                nextState = JSON.parse(JSON.stringify(state))
+                console.log(nextState)
+                nextState.panier[action.id].qte +=1
+                nextState.panier[action.id].prix = action.prix * nextState.panier[action.id].qte
                 return nextState
 
             case 'DELETE_PANIER':
-            nextState = {
-                ... state,
-                panier: [] 
-            }
+                nextState = {
+                    ... state,
+                    panier: [] 
+                }
                 return nextState
             
             default:

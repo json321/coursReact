@@ -85,8 +85,8 @@ class Connexion extends React.Component {
                     returnKeyType='done'
                     secureTextEntry={true}
                     />
-                <Lien style={styles.mb40} nav={() => navigate("Resetpass")} text="Mot de passe oublier" />
                 <Bouton nav={() => this.onLoginPressed()}  theme="violet" text="CONNEXION" />
+                <Lien style={styles.mb40} nav={() => navigate("Resetpass")} text="Mot de passe oublier" />
                 <Lien nav={() => navigate("Inscription")} text="S'inscrire" />
             </View>     
         )   

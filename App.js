@@ -6,6 +6,7 @@ import Loginsucces from './screens/loginsucces';
 import Resetpass from './screens/resetpass';
 import Profil from './screens/profil';
 import ListeProduct from './screens/listeProduct';
+import Panier from './screens/Panier';
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import { Provider } from 'react-redux';
@@ -24,6 +25,7 @@ export default function App() {
           <Stack.Screen name="Resetpass" component={Resetpass}/>
           <Stack.Screen name="Profil" component={Profil}/>
           <Stack.Screen name="ListeProduct" component={ListeProduct}/>
+          <Stack.Screen name="Panier" component={Panier}/>
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

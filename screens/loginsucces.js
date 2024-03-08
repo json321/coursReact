@@ -30,8 +30,9 @@ class Loginsucces extends React.Component{
         <View style={[styles.texte, styles.m10]}>
           <Text>Bonjour {this.state.nom}  bienvenue sur notre application d'inscription connexion</Text>
         </View> 
-        <Bouton nav={() => navigate("ListeProduct")} theme="white" text="Product"/>     
-        <Bouton nav={() => this.onDecoPressed()} theme="white" text="DECONNECTION"/>
+        <Bouton nav={() => navigate("ListeProduct")} theme="violet" text="Liste des produits"/>     
+        <Lien nav={() => navigate("Profil")}  text="profil"/>  
+        <Lien nav={() => this.onDecoPressed()}text="Deconnexion"/>
       </View>
     )
   }    

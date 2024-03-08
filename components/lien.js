@@ -9,7 +9,7 @@ export default class Lien extends React.Component {
     render () {
         var {text} = this.props
         return (
-            <View>
+            <View style={styles.mb20}>
                 <Pressable onPress={this.props.nav}>
                     <Text style={styles.lien}>{text}</Text>
                 </Pressable>
@@ -23,5 +23,8 @@ const styles = StyleSheet.create({
     lien: {
         color:"#048B9A",
         fontWeight: "bold"
+    },
+    mb20: {
+        marginBottom: 10
     }
 });
