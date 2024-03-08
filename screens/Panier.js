@@ -23,7 +23,7 @@ class ListeProduct extends React.Component{
         let toto = 0
         for (let i = 0; i < panier.length; i++) {
             toto += panier[i].prix
-            console.log(this.state.total)
+            // console.log(this.state.total)
         }
         this.setState({total: toto})
     }
@@ -44,33 +44,39 @@ class ListeProduct extends React.Component{
         const formData = new FormData();
         const profil = this.props.users
         const panier =this.props.panier
-        formData.append("nom", profil.nom)
-        formData.append("email", profil.email)
-        formData.append("produit", panier.type)
-        formData.append("qte", panier.qte)
-        formData.append("prix", panier.prix)
-        formData.append("total", this.state.total)
-        fetch('http://jdevalik.fr/api/j-lo_brutto/addPanier.php', {
-            method: 'post',
-            body: formData,
-            headers: {
-                "Content-Type": "multipart/form-data"
-            },
-        }).then((response) => response.json())
-            .then((json) =>  {
-                if(json == false) {
-                    Alert.alert(
-                        'Erreur',
-                        [
-                            {text: 'OK', onPress: () => console.log('OK Pressed')},
-                        ],
-                        {cancelable: false},
-                    );
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        for (let i = 0; i < panier.length; i++) {
+            // console.log(panier[i])
+
+            formData.append("nom", profil.nom)
+            formData.append("email", profil.email)
+            formData.append("produit", panier[i].type)
+            formData.append("qte", panier[i].qte)
+            formData.append("prix", panier[i].prix)
+            formData.append("prixU", panier[i].prixU)
+            formData.append("total", this.state.total)
+            
+            fetch('http://jdevalik.fr/api/j-lo_brutto/addPanier.php', {
+                method: 'post',
+                body: formData,
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                },
+            }).then((response) => response.json())
+                .then((json) =>  {
+                    if(json == false) {
+                        Alert.alert(
+                            'Erreur',
+                            [
+                                {text: 'OK', onPress: () => console.log('OK Pressed')},
+                            ],
+                            {cancelable: false},
+                        );
+                    }
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }        
     }
 
 
@@ -84,8 +90,7 @@ class ListeProduct extends React.Component{
     render () {
         const {navigate} = this.props.navigation
         const panier = this.props.panier
-        console.log(panier)
-        console.log(this.props.users)
+        // console.log(this.props.users)
         // console.log(this.props.products)
         return (
             <View style= {styles.container}>
@@ -98,7 +103,7 @@ class ListeProduct extends React.Component{
                             style={styles.image}
                             source={{uri:'http://jdevalik.fr/api/'+p.photo}}
                         />
-                        <Text>{p.nom}  Qte= {p.qte} p.  Prix={p.prix} €</Text>
+                        <Text>{p.nom}  Qte= {p.qte} p.  Prix={p.prixU} €</Text>
                         
                     </View>   
                 ))}
